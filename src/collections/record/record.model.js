@@ -9,7 +9,7 @@ const recordSchema = new mongoose.Schema({
         required: false,
         type: String
     },
-    kiwi_type: {
+    type_of_kiwi: {
         required: false,
         type: String
     },

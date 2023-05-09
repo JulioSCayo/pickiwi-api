@@ -29,7 +29,7 @@ const recordSchema = new mongoose.Schema({
         required: true,
         type: Number
     },
-    hour_payment: {
+    hourly_payment: {
         required: false,
         type: Number
     },

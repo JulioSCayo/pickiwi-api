@@ -9,7 +9,7 @@ const createRecord = async (req, res) => {
         res.status(200).json(recordSaved);
     }
     catch (error) {
-        res.status(400).json({message: error.message});
+        res.status(400).json({message: error});
     }
 }
 
@@ -22,7 +22,7 @@ const updateRecord = async (req, res) => {
         res.status(200).json({message: 'Record updated'});
     }
     catch (error) {
-        res.status(400).json({message: error.message});
+        res.status(400).json({message: error});
     }
 }
 
@@ -34,7 +34,7 @@ const deleteRecord = async (req, res) => {
         res.status(200).json({message: 'Record deleted'});
     }
     catch (error) {
-        res.status(400).json({message: error.message});
+        res.status(400).json({message: error});
     }
 }
 
@@ -46,7 +46,19 @@ const findRecord = async (req, res) => {
         res.status(200).json(record);
     }
     catch (error) {
-        res.status(400).json({message: error.message});
+        res.status(400).json({message: error});
+    }
+}
+
+const findAllUserRecords = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const records = await Record.find({'user_id': id});
+        res.status(200).json(records);
+    }
+    catch (error) {
+        res.status(400).json({message: error});
     }
 }
 
@@ -56,7 +68,7 @@ const findAllRecords = async (req, res) => {
         res.status(200).json(records);
     }
     catch (error) {
-        res.status(400).json({message: error.message});
+        res.status(400).json({message: error});
     }
 }
 
@@ -65,5 +77,6 @@ export default {
     updateRecord,
     deleteRecord,
     findRecord,
+    findAllUserRecords,
     findAllRecords
 };
